@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngIf="evento | async as users ">
+        <ion-item>
+          <ion-text>
+            {{users.nome}}
+          </ion-text>
+          <ion-text>
+            {{users.tema}}
+          </ion-text>
+          <ion-text>
+              {{users.data}}
+            </ion-text>
+            <ion-text>
+              {{users.horario}}
+            </ion-text>
+            <ion-text>
+              {{users.local}}
+            
+      </ion-list>
+
+</ion-content>

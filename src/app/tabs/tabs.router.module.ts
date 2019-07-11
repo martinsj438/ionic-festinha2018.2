@@ -34,6 +34,44 @@ const routes: Routes = [
           }
         ]
       },
+        {
+          path: 'perfilUsuario/:key',
+          children: [
+            {
+              path: '',
+              loadChildren: '../pages/perfil-usuario/perfil-usuario.module#PerfilUsuarioPageModule'
+            }
+            
+            ]
+      },
+      {
+        path: 'listEvento',
+        children: [
+          {
+            path: '',
+            loadChildren: '../pages/list-evento/list-evento.module#ListEventoPageModule'
+          }
+        ]
+      },
+      {
+        path: 'addEvento',
+        children: [
+          {
+            path: '',
+            loadChildren: '../pages/add-evento/add-evento.module#AddEventoPageModule'
+          }
+        ]
+      },
+        {
+          path: 'perfilEvento/:key',
+          children: [
+            {
+              path: '',
+              loadChildren: '../pages/perfil-evento/perfil-evento.module#PerfilEventoPageModule'
+            }
+            
+            ]
+      },
       {
         path: 'tab3',
         children: [

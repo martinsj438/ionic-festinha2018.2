@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Lista de Usuário</ion-title>
+    <ion-title>Lista de Evento</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,25 +10,24 @@
   </ion-refresher>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="danger" routerLink="/tabs/addUsuario">
+    <ion-fab-button color="danger" routerLink="/tabs/addEvento">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-  <ion-list *ngIf="usuarios | async as users">
+  <ion-list *ngIf="eventos | async as events">
 
-    <ion-item-sliding *ngFor="let user of users">
+    <ion-item-sliding *ngFor="let event of events">
       <ion-item-options side="start">
         <ion-item-option (click)="remover()" expandable color="danger">
         <ion-icon slot="icon-only" name="trash"></ion-icon>
         </ion-item-option>
       </ion-item-options>
 
-      <ion-item routerLink="/tabs/perfilUsuario/{{user.key}}">
+      <ion-item routerLink="/tabs/perfilEvento/">
         <ion-text>
-          {{ user.nome }} - {{user.email}}
+          {{ event.nome }} - {{event.tema}} - {{event.data}} - {{event.horario}} - {{event.local}}
         </ion-text>
-        <ion-note> {{user.key}}</ion-note>
       </ion-item>
 
       <ion-item-options side="end">
