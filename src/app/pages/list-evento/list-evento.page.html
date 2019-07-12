@@ -20,14 +20,15 @@
     <ion-item-sliding *ngFor="let event of events">
       <ion-item-options side="start">
         <ion-item-option (click)="remover()" expandable color="danger">
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
         </ion-item-option>
       </ion-item-options>
 
-      <ion-item routerLink="/tabs/perfilEvento/">
+      <ion-item routerLink="/tabs/perfilEvento/{{event.key}}">
         <ion-text>
-          {{ event.nome }} - {{event.tema}} - {{event.data}} - {{event.horario}} - {{event.local}}
+          {{ event.nome }} - {{event.tema}} - {{event.data}} 
         </ion-text>
+        <ion-note>{{event.key}}</ion-note>
       </ion-item>
 
       <ion-item-options side="end">

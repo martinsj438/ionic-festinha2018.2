@@ -26,7 +26,7 @@ export class UsuarioService {
   }
 
   get(key:string){
-    return this.db.object<Usuario>("usuario/" + key).snapshotChanges()
+    return this.db.object<Usuario>("usuario/" + key).valueChanges()
   }
 
 }

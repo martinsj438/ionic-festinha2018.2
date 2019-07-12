@@ -26,7 +26,7 @@ export class EventoService {
   }
 
   get(key:string){
-    return this.db.object<Evento>("evento/" + key).snapshotChanges()
+    return this.db.object<Evento>("evento/" + key).valueChanges()
   }
 
 }

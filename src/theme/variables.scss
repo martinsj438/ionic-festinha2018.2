@@ -76,7 +76,7 @@
   --ion-color-light-tint: #f5f6f9;
 
   /** festinha **/
-  --ion-color-festinha: #ff66cc;
+  --ion-color-festinha: rgb(77, 77, 77);
   --ion-color-festinha-rgb: 255, 102, 204;
   --ion-color-festinha-contrast: #ffffff;
   --ion-color-festinha-contrast-rgb: 255, 255, 255;
@@ -89,7 +89,7 @@
   }
 
   // Opções Globais
-  // --ion-background-color:#000;
-  // --ion-text-color:#fff;
+  --ion-background-color:rgb(77, 77, 77);
+  --ion-text-color:#fff;
   
 }

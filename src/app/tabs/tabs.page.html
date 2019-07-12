@@ -14,6 +14,8 @@
 
     <ion-tab-button tab="listEvento">
       <ion-icon name="beer"></ion-icon>
+      <ion-badge color="danger" *ngIf="nevent != 0">{{nevent}}</ion-badge>
+
       <ion-label>Eventos</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
