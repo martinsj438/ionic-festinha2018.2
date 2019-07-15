@@ -30,13 +30,13 @@ export class ListUsuarioPage implements OnInit {
       event.target.complete();
     }, 2000);
   }
-  
-  remover(key){
+
+  remover(key) {
     this.usuarioService.remove(key).then(
-      res=>{
+      res => {
         this.presentAlert("Aviso!", "Usuario apagado!");
       },
-      err=>{
+      err => {
         this.presentAlert("Erro!", "Não foi possivel apagar o usuario!");
       }
     )

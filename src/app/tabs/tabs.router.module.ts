@@ -43,15 +43,15 @@ const routes: Routes = [
           }
         ]
       },
-        {
-          path: 'perfilUsuario/:key',
-          children: [
-            {
-              path: '',
-              loadChildren: '../pages/perfil-usuario/perfil-usuario.module#PerfilUsuarioPageModule'
-            }
-            
-            ]
+      {
+        path: 'perfilUsuario/:key',
+        children: [
+          {
+            path: '',
+            loadChildren: '../pages/perfil-usuario/perfil-usuario.module#PerfilUsuarioPageModule'
+          }
+
+        ]
       },
       {
         path: 'listEvento',
@@ -71,15 +71,15 @@ const routes: Routes = [
           }
         ]
       },
-        {
-          path: 'perfilEvento/:key',
-          children: [
-            {
-              path: '',
-              loadChildren: '../pages/perfil-evento/perfil-evento.module#PerfilEventoPageModule'
-            }
-            
-            ]
+      {
+        path: 'perfilEvento/:key',
+        children: [
+          {
+            path: '',
+            loadChildren: '../pages/perfil-evento/perfil-evento.module#PerfilEventoPageModule'
+          }
+
+        ]
       },
       {
         path: 'tab3',
@@ -110,4 +110,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

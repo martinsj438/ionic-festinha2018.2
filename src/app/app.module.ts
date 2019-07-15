@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule  } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { Camera } from '@ionic-native/camera/ngx';
  
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database'
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    FormsModule, Camera
   ],
   bootstrap: [AppComponent]
 })
