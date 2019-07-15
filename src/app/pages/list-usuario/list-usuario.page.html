@@ -19,22 +19,22 @@
 
     <ion-item-sliding *ngFor="let user of users">
       <ion-item-options side="start">
-        <ion-item-option (click)="remover()" expandable color="danger">
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
+        <ion-item-option (click)="remover(user.key)" expandable color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
         </ion-item-option>
       </ion-item-options>
 
       <ion-item routerLink="/tabs/perfilUsuario/{{user.key}}">
         <ion-text>
-          {{ user.nome }} - {{user.email}}
+          {{user.nome}} - {{user.email}}
         </ion-text>
         <ion-note> {{user.key}}</ion-note>
       </ion-item>
 
       <ion-item-options side="end">
-        <ion-item-option (click)="atualizar()" expandable>
-          <ion-icon slot="icon-only" name="create"></ion-icon>
-        </ion-item-option>
+        <ion-item-option routerLink="/tabs/addUsuario/{{user.key}}" expandable>
+            <ion-icon slot="icon-only" name="create"></ion-icon>
+          </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
