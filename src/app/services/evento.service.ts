@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
-import { Evento } from './../model/evento';
-import { map } from 'rxjs/operators';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { map } from 'rxjs/operators'
+import { Evento } from '../model/evento';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +12,19 @@ export class EventoService {
     public db: AngularFireDatabase
   ) { }
 
-  save(evento:Evento){
-    return this.db.list("evento").push(evento);
-
+  save(evento: Evento) {
+    return this.db.list<Evento>("evento").push(evento);
   }
 
-  getAll(){
+  getAll() {
     return this.db.list("evento").snapshotChanges()
-    .pipe(
-      map(noCopyIsDocs =>
-        noCopyIsDocs.map(c=> ({ key: c.payload.key, ...c.payload.val()})))
-    )
+      .pipe(
+        map(noCopyIsDocs =>
+          noCopyIsDocs.map(c => ({ key: c.payload.key, ...c.payload.val() })))
+      )
   }
 
-  get(key:string){
+  get(key: string) {
     return this.db.object<Evento>("evento/" + key).valueChanges()
   }
-
 }
-

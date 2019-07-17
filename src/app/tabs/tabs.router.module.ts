@@ -26,7 +26,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'addUsuario/:key',
+        path: 'addUsuario',
         children: [
           {
             path: '',
@@ -35,7 +35,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'addUsuario',
+        path: 'addUsuario/:key',
         children: [
           {
             path: '',
@@ -50,7 +50,6 @@ const routes: Routes = [
             path: '',
             loadChildren: '../pages/perfil-usuario/perfil-usuario.module#PerfilUsuarioPageModule'
           }
-
         ]
       },
       {
@@ -78,18 +77,9 @@ const routes: Routes = [
             path: '',
             loadChildren: '../pages/perfil-evento/perfil-evento.module#PerfilEventoPageModule'
           }
-
         ]
       },
-      {
-        path: 'tab3',
-        children: [
-          {
-            path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
-          }
-        ]
-      },
+      
       {
         path: '',
         redirectTo: '/tabs/tab1',
@@ -110,4 +100,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule { }
+export class TabsPageRoutingModule {}

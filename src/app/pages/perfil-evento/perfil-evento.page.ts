@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EventoService } from 'src/app/services/evento.service';
 import { ActivatedRoute } from '@angular/router';
 
+import { EventoService } from 'src/app/services/evento.service';
 
 @Component({
   selector: 'app-perfil-evento',
@@ -10,19 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PerfilEventoPage implements OnInit {
 
-  protected evento:any;
-  key: string;
-  
+  protected evento: any;
+  protected key: string;
 
   constructor(
     public eventoService: EventoService,
-    public activatedRouter: ActivatedRoute
+    public activeRouter: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.key = this.activatedRouter.snapshot.paramMap.get("key");
+    this.key = this.activeRouter.snapshot.paramMap.get("key");
     this.evento = this.eventoService.get(this.key);
-   }
- 
- }
- 
+  }
+
+}

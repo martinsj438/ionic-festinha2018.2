@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/model/usuario';
-import { AlertController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { UsuarioService } from 'src/app/services/usuario.service';
+
+import { Usuario } from './../../model/usuario';
+import { UsuarioService } from './../../services/usuario.service';
 
 @Component({
   selector: 'app-add-usuario',
@@ -14,24 +15,26 @@ export class AddUsuarioPage implements OnInit {
 
   public usuario: Usuario;
   public key: string;
-  protected preview:any;
+  protected preview: any;
 
   constructor(
     public alertController: AlertController,
     public router: Router,
     public usuarioService: UsuarioService,
-    public activatedRouter: ActivatedRoute,
+    public activeRouter: ActivatedRoute,
     private camera: Camera
-
   ) { }
 
   ngOnInit() {
     this.usuario = new Usuario;
-
-    this.key = this.activatedRouter.snapshot.paramMap.get("key");
+    this.preview = null;
+    this.key = this.activeRouter.snapshot.paramMap.get("key");
     if (this.key) {
       this.usuarioService.get(this.key).subscribe(
-        res => this.usuario = res,
+        res =>{
+         this.usuario = res
+         this.preview = res.foto
+        },  
         err => this.key = null
       );
     }
@@ -39,11 +42,12 @@ export class AddUsuarioPage implements OnInit {
 
   onSubmit(form) {
     if (form.valid) {
+      this.usuario.foto = this.preview;
       if (!this.key) {
         this.usuarioService.save(this.usuario)
           .then(
             res => {
-              this.presentAlert("Aviso", "cadastrado!");
+              this.presentAlert("Aviso", "Cadastrado!");
               form.reset();
               this.router.navigate(['/']);
             },
@@ -52,7 +56,7 @@ export class AddUsuarioPage implements OnInit {
             }
           ).catch(
             err => {
-              this.presentAlert("Erro!", "AO acessar ao sistema!");
+              this.presentAlert("Erro!", "Ao acessar ao sistema!");
               this.router.navigate(['/']);
             }
           )
@@ -60,16 +64,16 @@ export class AddUsuarioPage implements OnInit {
         this.usuarioService.update(this.usuario, this.key)
           .then(
             res => {
-              this.presentAlert("Aviso", "cadastrado!");
+              this.presentAlert("Aviso", "Atualizado!");
               form.reset();
               this.router.navigate(['/']);
             },
             err => {
-              this.presentAlert("Epa!", "Erro ao cadastrar!");
+              this.presentAlert("Epa!", "Erro ao atualizar!");
             }
           ).catch(
             err => {
-              this.presentAlert("Erro!", "AO acessar ao sistema!");
+              this.presentAlert("Erro!", "Ao acessar ao sistema!");
               this.router.navigate(['/']);
             }
           )
@@ -86,7 +90,6 @@ export class AddUsuarioPage implements OnInit {
     });
 
     await alert.present();
-
   }
 
   tirarFoto() {
@@ -96,7 +99,6 @@ export class AddUsuarioPage implements OnInit {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
-
     this.camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
@@ -108,3 +110,4 @@ export class AddUsuarioPage implements OnInit {
   }
 
 }
+

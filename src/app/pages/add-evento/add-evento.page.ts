@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-
-import { Evento } from './../../model/evento';
-import { EventoService } from './../../services/evento.service';
+import { Router } from '@angular/router';
+import { Evento } from 'src/app/model/evento';
+import { EventoService } from 'src/app/services/evento.service';
 
 @Component({
   selector: 'app-add-evento',
@@ -53,4 +52,3 @@ export class AddEventoPage implements OnInit {
   }
 
 }
-
