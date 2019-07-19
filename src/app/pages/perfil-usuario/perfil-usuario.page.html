@@ -4,6 +4,13 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content padding>
+    <ion-item lines="none">
+      <img src ="assets/perfil.jpg">
+     
+    </ion-item>
+  
+
 <ion-content>
   <ion-list *ngIf="usuario | async as user">
     <ion-item>
@@ -18,15 +25,13 @@
       </ion-text>
     </ion-item>
 
-    <ion-item>
+    <!--<ion-item>
       <ion-text>
         {{user.pws}}
       </ion-text>
-    </ion-item>
+    </ion-item>-->
 
-    <ion-item>
-      <ion-note> {{key}}</ion-note>
-    </ion-item>
+    
 
   </ion-list>
 </ion-content>

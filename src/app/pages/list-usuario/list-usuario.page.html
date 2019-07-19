@@ -28,13 +28,13 @@
         <ion-text>
           {{user.nome}} - {{user.email}}
         </ion-text>
-        <ion-note> {{user.key}}</ion-note>
+
       </ion-item>
 
       <ion-item-options side="end">
         <ion-item-option routerLink="/tabs/addUsuario/{{user.key}}" expandable>
-            <ion-icon slot="icon-only" name="create"></ion-icon>
-          </ion-item-option>
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
