@@ -87,8 +87,7 @@ const routes: Routes = [
             loadChildren: '../pages/perfil-evento/perfil-evento.module#PerfilEventoPageModule'
           }
         ]
-      },
-      
+      },  
       {
         path: '',
         redirectTo: '/tabs/tab1',

@@ -11,6 +11,7 @@ import {
   Marker,
   Environment
 } from '@ionic-native/google-maps';
+import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
 
 @Component({
@@ -20,11 +21,10 @@ import {
 })
 export class MapsPage implements OnInit {
 
-
   lat: number
   lng: number
-  map: GoogleMap;
 
+  map: GoogleMap;
 
   constructor(
     private geolocation: Geolocation
@@ -38,7 +38,7 @@ export class MapsPage implements OnInit {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
-      console.log(this.lat, " ", this.lng);
+      console.log(this.lat, "  ", this.lng);
     }).catch((error) => {
       console.log('Error getting location', error);
     });
@@ -53,7 +53,7 @@ export class MapsPage implements OnInit {
     });
   }
 
-  loadMap() {
+  async loadMap() {
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
@@ -64,7 +64,22 @@ export class MapsPage implements OnInit {
         tilt: 30
       }
     };
-
     this.map = GoogleMaps.create('map_canvas', mapOptions);
+  }
+
+  mapClick() {
+    this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(
+      res => {
+       // console.log(res);
+       this.map.clear();
+        this.map.addMarker({
+          //position: {
+            //lat: res[0].lat,
+            //lng: res[0].lng
+          //}
+          position: res[0]
+        })
+      }
+    )
   }
 }
