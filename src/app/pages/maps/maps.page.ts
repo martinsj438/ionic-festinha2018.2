@@ -8,17 +8,15 @@ import {
   GoogleMapOptions,
   CameraPosition,
   MarkerOptions,
-  Marker,
-  Environment
+  Marker                                                                   
 } from '@ionic-native/google-maps';
-import { createOfflineCompileUrlResolver } from '@angular/compiler';
-
 
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.page.html',
   styleUrls: ['./maps.page.scss'],
 })
+
 export class MapsPage implements OnInit {
 
   lat: number
@@ -38,7 +36,6 @@ export class MapsPage implements OnInit {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
-      this.addMarket();
       console.log(this.lat, "  ", this.lng);
     }).catch((error) => {
       console.log('Error getting location', error);
@@ -54,7 +51,7 @@ export class MapsPage implements OnInit {
     });
   }
 
-  async loadMap() {
+  loadMap() {
     let mapOptions: GoogleMapOptions = {
       camera: {
         target: {
@@ -67,26 +64,27 @@ export class MapsPage implements OnInit {
     };
     this.map = GoogleMaps.create('map_canvas', mapOptions);
   }
-
+  
+  //Google market
   marker: Marker;
-
   mapClick() {
     this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(
       res => {
-       // console.log(res);
-       if(this.marker){
-      this.marker.setPosition(res[0]);
-      }else{ 
-      this.addMarket();
+        // console.log(res);
+        if (this.marker) {
+          this.marker.setPosition(res[0]);
+        } else {
+          this.addMarket();
         }
-      })
-    }
-    addMarket() {
-      this.marker = this.map.addMarkerSync({
-        position:{
-          lat: this.lat,
-          lng: this.lng
-        }
-      });
-    }
+    })
+}
+
+addMarket() {
+  this.marker = this.map.addMarkerSync({
+    position: {
+      lat: this.lat,
+      lng: this.lng
+      }
+    })
   }
+}
