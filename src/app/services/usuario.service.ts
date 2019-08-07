@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators'
 import { Usuario } from './../model/usuario';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { Usuario } from './../model/usuario';
 export class UsuarioService {
 
   constructor(
-    public db: AngularFireDatabase
+    public db: AngularFireDatabase,
+    public afAuth: AngularFireAuth
   ) { }
 
   save(usuario: Usuario, key:string) {
@@ -23,6 +25,8 @@ export class UsuarioService {
         map(noCopyIsDocs =>
           noCopyIsDocs.map(c => ({ key: c.payload.key, ...c.payload.val() })))
       )
+      //console.log(this.afAuth.auth.applyActionCode(key))
+     
   }
 
   get(key: string) {
