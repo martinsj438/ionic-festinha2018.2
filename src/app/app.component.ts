@@ -11,7 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
   androidPermissions: any;
-  
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -28,17 +28,17 @@ export class AppComponent {
     });
   }
 
-  permitir(){
+  permitir() {
     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
-      result => console.log('Has permission?',result.hasPermission),
+      result => console.log('Has permission?', result.hasPermission),
       err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA
       )
     );
     this.androidPermissions.checkPermission(this.androidPermissions.LOCATION_HARDWARE)
-    .then(
-      result => console.log('Has permission?',result.hasPermission),
-      err => this.androidPermissions.requestPermission(
-        this.androidPermissions.PERMISSION.LOCATION_HARDWARE)
-    );
+      .then(
+        result => console.log('Has permission?', result.hasPermission),
+        err => this.androidPermissions.requestPermission(
+          this.androidPermissions.PERMISSION.LOCATION_HARDWARE)
+      );
   }
 }
