@@ -11,12 +11,16 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+
+
 
 //Firebase ---------------------------------------
 import { environment } from './../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +34,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    FormsModule, Camera, Geolocation
+    FormsModule, Camera, Geolocation,
+    AndroidPermissions
   ],
   bootstrap: [AppComponent]
 })

@@ -23,10 +23,9 @@ export class UsuarioService {
     return this.db.list("usuario").snapshotChanges()
       .pipe(
         map(noCopyIsDocs =>
-          noCopyIsDocs.map(c => ({ key: c.payload.key, ...c.payload.val() })))
+          noCopyIsDocs.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+        )
       )
-      //console.log(this.afAuth.auth.applyActionCode(key))
-     
   }
 
   get(key: string) {
