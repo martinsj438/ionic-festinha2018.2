@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { LoadingController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/auth'
+
 import { Usuario } from './../../model/usuario';
 import { UsuarioService } from './../../services/usuario.service';
 
@@ -24,7 +24,7 @@ export class AddUsuarioPage implements OnInit {
     public usuarioService: UsuarioService,
     public activeRouter: ActivatedRoute,
     private camera: Camera,
-    private afAuth: AngularFireAuth
+    private afAuth:AngularFireAuth
   ) { }
 
   ngOnInit() {
@@ -33,10 +33,10 @@ export class AddUsuarioPage implements OnInit {
     this.key = this.activeRouter.snapshot.paramMap.get("key");
     if (this.key) {
       this.usuarioService.get(this.key).subscribe(
-        res => {
-          this.usuario = res
-          this.preview = res.foto
-        },
+        res =>{
+         this.usuario = res
+         this.preview = res.foto
+        },  
         err => this.key = null
       );
     }
@@ -47,10 +47,9 @@ export class AddUsuarioPage implements OnInit {
       this.usuario.foto = this.preview;
       if (!this.key) {
         this.afAuth.auth.createUserWithEmailAndPassword(this.usuario.email, this.usuario.pws)
-
           .then(
             res => {
-              this.usuario.email = null;
+              //this.usuario.email = null;
               this.usuario.pws = null;
               this.usuarioService.save(this.usuario, res.user.uid);
               this.presentAlert("Aviso", "Cadastrado!");
@@ -116,4 +115,3 @@ export class AddUsuarioPage implements OnInit {
   }
 
 }
-

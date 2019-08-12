@@ -10,8 +10,8 @@ import { EventoService } from 'src/app/services/evento.service';
 })
 export class PerfilEventoPage implements OnInit {
 
-  protected evento: any;
-  protected key: string;
+ public evento: any;
+  public key: string;
 
   constructor(
     public eventoService: EventoService,
@@ -24,3 +24,4 @@ export class PerfilEventoPage implements OnInit {
   }
 
 }
+

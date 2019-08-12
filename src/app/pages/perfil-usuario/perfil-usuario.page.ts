@@ -10,8 +10,8 @@ import { UsuarioService } from './../../services/usuario.service';
 })
 export class PerfilUsuarioPage implements OnInit {
 
-  protected usuario: any;
-  protected key: string;
+   public usuario: any;
+  public key: string;
 
   constructor(
     public usuarioService: UsuarioService,

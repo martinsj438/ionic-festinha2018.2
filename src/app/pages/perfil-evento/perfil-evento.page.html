@@ -11,14 +11,37 @@
       <ion-note> {{key}}</ion-note>
     </ion-item>
     
-    <ion-item>
+    <ion-item >
       <ion-text>
         <h1>{{e.nome}}</h1>
         <p>Tema: {{e.tema}}</p>
         <p>Data: {{e.data}} </p>
         <p>Horario: {{e.horario}}</p>
+        <p>Fotos: {{e.fotos}}</p>
       </ion-text>
     </ion-item>
   </ion-list>
+
+  <ion-item>
+    <ion-slides pager="true">
+        
+          <ion-slide>
+            <img src="/assets/baile.jpg">
+          </ion-slide>
+
+          <ion-slide>
+            <img src="/assets/festa.jpg">
+          </ion-slide>
+          
+          <ion-slide>
+            <img src="assets/baile2.jpg">
+          </ion-slide>
+
+          <ion-slide>
+            <img src="/assets/mabeco.jpg">
+          </ion-slide>
+
+      </ion-slides>
+    </ion-item>
 
 </ion-content>

@@ -8,19 +8,16 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-
-
 
 //Firebase ---------------------------------------
 import { environment } from './../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-
+import { AngularFireAuthModule } from '@angular/fire/auth'
 
 @NgModule({
   declarations: [AppComponent],
